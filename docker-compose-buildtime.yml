@@ -1,0 +1,17 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    image: nginx
+      - ./nginx-config/:/etc/nginx/conf.d/
+    ports:
+      - 80:80
+    depends_on:
+      - php
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile.php
+    image: php
